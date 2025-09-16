@@ -1,0 +1,49 @@
+html {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+
+
+body {
+    margin: 0%;
+    background-color: grey;
+    }
+ 
+/* achicar imagen */  
+img {
+    width: 19%;
+    height: auto;
+    margin-left: 40%;}  
+
+
+    header {
+        background-color: black;
+        color: skyblue;
+        text-align: center;
+        padding: 5px;
+        }
+
+    header h1 {
+        font-size: 50px;
+        }
+    
+    h2 {
+        text-align: center;
+        color: black;
+        font-size: 29px;
+        }
+
+    p1 {
+        
+        color: black;
+        font-size: 25px;
+        text-align: center;
+        }
+    
+    p2 { 
+        color: black;
+        font-size: 25px;
+        text-align: center;
+        }
+         
+        
