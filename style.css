@@ -233,13 +233,20 @@ h2 {
 .post-media-image {
   width: 100%;
   height: auto;
-  display: block;
+  display: none;
   transform: scale(1);
   transition: transform 0.3s ease-out;
   cursor: zoom-in;
   will-change: transform;
 }
 
+ codex/implement-image-slideshow-with-captions-cbh1i9
+=======
+.post-media-image.is-active {
+  display: block;
+}
+
+ main
 .post-media-caption {
   margin: 0;
   padding: 0.85rem 1.25rem 1.1rem;
