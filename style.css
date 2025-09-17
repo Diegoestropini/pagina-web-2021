@@ -240,10 +240,13 @@ h2 {
   will-change: transform;
 }
 
+ codex/implement-image-slideshow-with-captions-cbh1i9
+=======
 .post-media-image.is-active {
   display: block;
 }
 
+ main
 .post-media-caption {
   margin: 0;
   padding: 0.85rem 1.25rem 1.1rem;
