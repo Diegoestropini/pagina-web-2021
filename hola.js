@@ -1,7 +1,5 @@
 'use strict';
 
-console.log(1 + 2);
-
 document.addEventListener('DOMContentLoaded', () => {
     const heroTrigger = document.querySelector('.hero-title');
     const mainContent = document.getElementById('contenido');
