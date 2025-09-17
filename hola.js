@@ -1,6 +1,8 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('js-enabled');
+
     const heroTrigger = document.querySelector('.hero-title');
     const mainContent = document.getElementById('contenido');
 
