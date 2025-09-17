@@ -44,6 +44,7 @@ function setupProgressiveZoom(image) {
         }
 
         isZooming = true;
+        cancelAnimation();
         currentScale = MIN_SCALE;
         image.style.transition = 'none';
         image.style.cursor = 'zoom-out';
@@ -69,7 +70,11 @@ function setupProgressiveZoom(image) {
     };
 
     const handlePointerDown = (event) => {
-        if (event.button !== undefined && event.button !== 0) {
+        if (event.pointerType === 'mouse' && event.button !== 0) {
+            return;
+        }
+
+        if (event.pointerType === 'touch' && event.isPrimary === false) {
             return;
         }
 
@@ -93,12 +98,20 @@ function setupProgressiveZoom(image) {
         stopZoom();
     };
 
+    const handlePointerLeave = () => {
+        stopZoom();
+    };
+
     const handleMouseDown = (event) => {
         if (event.button !== 0) {
             return;
         }
 
         startZoom();
+    };
+
+    const handleMouseUp = () => {
+        stopZoom();
     };
 
     const handleTouchStart = (event) => {
@@ -109,23 +122,26 @@ function setupProgressiveZoom(image) {
         startZoom();
     };
 
+    const handleTouchEnd = () => {
+        stopZoom();
+    };
+
     const supportsPointer = window.PointerEvent !== undefined;
 
     if (supportsPointer) {
-        image.addEventListener('pointerenter', startZoom);
         image.addEventListener('pointerdown', handlePointerDown);
         image.addEventListener('pointerup', handlePointerUp);
-        image.addEventListener('pointerleave', stopZoom);
+        image.addEventListener('pointerleave', handlePointerLeave);
         image.addEventListener('pointercancel', stopZoom);
-        document.addEventListener('mouseup', stopZoom);
+        document.addEventListener('pointerup', stopZoom);
+        document.addEventListener('pointercancel', stopZoom);
     } else {
-        image.addEventListener('mouseenter', startZoom);
-        image.addEventListener('mouseleave', stopZoom);
         image.addEventListener('mousedown', handleMouseDown);
-        document.addEventListener('mouseup', stopZoom);
+        document.addEventListener('mouseup', handleMouseUp);
+        image.addEventListener('mouseleave', stopZoom);
         image.addEventListener('touchstart', handleTouchStart, { passive: true });
-        document.addEventListener('touchend', stopZoom);
-        document.addEventListener('touchcancel', stopZoom);
+        document.addEventListener('touchend', handleTouchEnd);
+        document.addEventListener('touchcancel', handleTouchEnd);
     }
 
     document.addEventListener('visibilitychange', () => {
