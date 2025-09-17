@@ -119,8 +119,8 @@ header h1 {
 }
 
 /* Mostrar/Ocultar contenido según estado */
-body:not(.content-visible) main,
-body:not(.content-visible) footer {
+body.js-enabled:not(.content-visible) main,
+body.js-enabled:not(.content-visible) footer {
   display: none;
 }
 body.content-visible .hero {
