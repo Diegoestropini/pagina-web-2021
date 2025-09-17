@@ -178,7 +178,8 @@ h2 {
    Para no romper otras imágenes (hero, etc.), lo limito a .post-media img */
 .post-media {
   margin: 2.5rem auto 0;
-  max-width: 520px;
+  width: 100%;
+  max-width: 360px;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 20px 55px rgba(15, 23, 42, 0.5);
@@ -187,6 +188,11 @@ h2 {
   width: 100%;
   height: auto;
   display: block;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+  cursor: zoom-in;
+  will-change: transform;
 }
 /* Si querés reproducir exactamente tu “miniatura a la derecha”, podés usar: */
 /*
