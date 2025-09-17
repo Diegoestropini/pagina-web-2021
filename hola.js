@@ -161,6 +161,12 @@ const initializeMediaRotation = (mediaContainer) => {
     rotationTimer = window.setInterval(goToNextImage, ROTATION_INTERVAL);
   };
 
+  const resumeRotationIfIdle = () => {
+    if (!mediaContainer.matches(':hover')) {
+      startRotation();
+    }
+  };
+
   const handleManualNavigation = (navigateFn) => {
     if (typeof navigateFn !== 'function') {
       return;
@@ -168,7 +174,7 @@ const initializeMediaRotation = (mediaContainer) => {
 
     stopRotation();
     navigateFn();
-    startRotation();
+    resumeRotationIfIdle();
   };
 
   if (images.length >= 2) {
@@ -179,11 +185,7 @@ const initializeMediaRotation = (mediaContainer) => {
 
   focusHandlers.forEach((control) => {
     control.addEventListener('focus', stopRotation);
-    control.addEventListener('blur', () => {
-      if (!mediaContainer.matches(':hover')) {
-        startRotation();
-      }
-    });
+    control.addEventListener('blur', resumeRotationIfIdle);
   });
 
   if (prevButton) {
@@ -201,14 +203,14 @@ const initializeMediaRotation = (mediaContainer) => {
   }
 
   mediaContainer.addEventListener('pointerenter', stopRotation);
-  mediaContainer.addEventListener('pointerleave', startRotation);
-  mediaContainer.addEventListener('pointercancel', startRotation);
+  mediaContainer.addEventListener('pointerleave', resumeRotationIfIdle);
+  mediaContainer.addEventListener('pointercancel', resumeRotationIfIdle);
 
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       stopRotation();
     } else {
-      startRotation();
+      resumeRotationIfIdle();
     }
   });
 };
