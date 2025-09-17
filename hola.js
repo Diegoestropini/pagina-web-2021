@@ -218,4 +218,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const mediaContainers = Array.from(document.querySelectorAll('.post-media'));
   mediaContainers.forEach(initializeMediaRotation);
+
+  const heroTitle = document.querySelector('.hero-title');
+  const mainContent = document.querySelector('#contenido');
+
+  if (heroTitle && mainContent instanceof HTMLElement) {
+    const revealContent = () => {
+      document.body.classList.add('content-visible');
+      mainContent.focus();
+    };
+
+    const isModifiedEvent = (event) => event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
+
+    heroTitle.addEventListener('click', (event) => {
+      if (isModifiedEvent(event)) {
+        return;
+      }
+
+      if (typeof event.button === 'number' && event.button !== 0) {
+        return;
+      }
+
+      event.preventDefault();
+      revealContent();
+    });
+
+    heroTitle.addEventListener('keydown', (event) => {
+      const { key } = event;
+
+      if (key !== 'Enter' && key !== ' ' && key !== 'Spacebar') {
+        return;
+      }
+
+      if (event.ctrlKey || event.metaKey) {
+        return;
+      }
+
+      event.preventDefault();
+      revealContent();
+    });
+  }
 });
