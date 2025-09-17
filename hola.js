@@ -3,23 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('js-enabled');
 
-    const heroTrigger = document.querySelector('.hero-title');
-    const mainContent = document.getElementById('contenido');
     const postImage = document.querySelector('.post-media img');
-
-    if (heroTrigger) {
-        heroTrigger.addEventListener('click', () => {
-            document.body.classList.add('content-visible');
-
-            if (!mainContent) {
-                return;
-            }
-
-            window.requestAnimationFrame(() => {
-                mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-    }
 
     if (!postImage) {
         return;
