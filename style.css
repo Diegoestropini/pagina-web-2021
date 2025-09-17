@@ -217,6 +217,7 @@ h2 {
 /* En tu versión original: img global 19% + margin-left:40%;
    Para no romper otras imágenes (hero, etc.), lo limito a .post-media-image */
 .post-media {
+  position: relative;
   margin: 2.5rem auto 0;
   width: 100%;
   max-width: 360px;
@@ -226,8 +227,6 @@ h2 {
   background: rgba(15, 23, 42, 0.65);
   border: 1px solid var(--surface-border);
   backdrop-filter: blur(16px);
-  display: flex;
-  flex-direction: column;
 }
 
 .post-media-image {
@@ -243,14 +242,57 @@ h2 {
   display: block;
 }
 .post-media-caption {
+  position: absolute;
+  inset: auto 0 0;
   margin: 0;
-  padding: 0.85rem 1.25rem 1.1rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  padding: 0.65rem 1.25rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
   text-align: center;
-  color: var(--text-secondary);
-  background: rgba(15, 23, 42, 0.85);
-  border-top: 1px solid var(--surface-border);
+  color: var(--text-primary);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.82) 65%, rgba(15, 23, 42, 0.92) 100%);
+  pointer-events: none;
+}
+
+.post-media-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(226, 232, 240, 0.35);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.65);
+  color: var(--text-primary);
+  font-size: 1.55rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.post-media-control:hover,
+.post-media-control:focus-visible {
+  transform: translateY(-50%) scale(1.08);
+  background: rgba(56, 189, 248, 0.35);
+  border-color: rgba(56, 189, 248, 0.65);
+  outline: none;
+}
+
+.post-media-control:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.post-media-control--prev {
+  left: 0.85rem;
+}
+
+.post-media-control--next {
+  right: 0.85rem;
 }
 /* Si querés reproducir exactamente tu “miniatura a la derecha”, podés usar: */
 /*
@@ -298,6 +340,11 @@ footer {
   }
   .post {
     padding: clamp(1.75rem, 2vw + 1.5rem, 2.5rem);
+  }
+  .post-media-control {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.35rem;
   }
 }
 

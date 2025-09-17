@@ -80,6 +80,8 @@ const createZoomController = (image) => {
 const initializeMediaRotation = (mediaContainer) => {
   const images = Array.from(mediaContainer.querySelectorAll('.post-media-image'));
   const caption = mediaContainer.querySelector('.post-media-caption');
+  const prevButton = mediaContainer.querySelector('.post-media-control--prev');
+  const nextButton = mediaContainer.querySelector('.post-media-control--next');
 
   if (images.length === 0) {
     return;
@@ -136,6 +138,11 @@ const initializeMediaRotation = (mediaContainer) => {
     showImage(nextIndex);
   };
 
+  const goToPreviousImage = () => {
+    const previousIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(previousIndex);
+  };
+
   let rotationTimer = null;
 
   const stopRotation = () => {
@@ -154,8 +161,43 @@ const initializeMediaRotation = (mediaContainer) => {
     rotationTimer = window.setInterval(goToNextImage, ROTATION_INTERVAL);
   };
 
+  const handleManualNavigation = (navigateFn) => {
+    if (typeof navigateFn !== 'function') {
+      return;
+    }
+
+    stopRotation();
+    navigateFn();
+    startRotation();
+  };
+
   if (images.length >= 2) {
     startRotation();
+  }
+
+  const focusHandlers = [prevButton, nextButton].filter(Boolean);
+
+  focusHandlers.forEach((control) => {
+    control.addEventListener('focus', stopRotation);
+    control.addEventListener('blur', () => {
+      if (!mediaContainer.matches(':hover')) {
+        startRotation();
+      }
+    });
+  });
+
+  if (prevButton) {
+    prevButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      handleManualNavigation(goToPreviousImage);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      handleManualNavigation(goToNextImage);
+    });
   }
 
   mediaContainer.addEventListener('pointerenter', stopRotation);
