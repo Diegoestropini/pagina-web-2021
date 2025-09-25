@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+  <title id="title">Nebulosa abstracta en expansión</title>
+  <desc id="desc">Ilustración geométrica que evoca una nebulosa con destellos morados y azules.</desc>
+  <defs>
+    <radialGradient id="nebula" cx="45%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#ffe8ff" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#b775ff" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#1b103a" stop-opacity="0.6" />
+    </radialGradient>
+    <linearGradient id="tail" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5bd2ff" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#b75cff" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="#0d1025" />
+  <circle cx="320" cy="300" r="260" fill="url(#nebula)" />
+  <g fill="#ffffff" fill-opacity="0.75">
+    <circle cx="120" cy="140" r="6" />
+    <circle cx="520" cy="110" r="4" />
+    <circle cx="540" cy="260" r="5" />
+    <circle cx="420" cy="520" r="7" />
+    <circle cx="140" cy="470" r="5" />
+  </g>
+  <g opacity="0.5" fill="url(#tail)">
+    <path d="M120 420 Q260 300, 420 420 T620 420" />
+    <path d="M90 340 Q240 250, 420 360 T640 400" opacity="0.8" />
+  </g>
+  <g fill="#5bd2ff" fill-opacity="0.75">
+    <circle cx="320" cy="300" r="68" />
+    <circle cx="420" cy="230" r="32" />
+    <circle cx="230" cy="220" r="42" />
+  </g>
+  <g fill="#ff9cf0" fill-opacity="0.75">
+    <circle cx="370" cy="360" r="36" />
+    <circle cx="250" cy="360" r="28" />
+    <circle cx="460" cy="320" r="24" />
+  </g>
+</svg>
