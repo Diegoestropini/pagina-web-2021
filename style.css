@@ -310,7 +310,7 @@ h2 {
 #intro,
 .dreams,
 #dreams {
-  font-size: 25px;
+  font-size: clamp(1rem, 0.4vw + 1rem, 1.25rem);
   text-align: center;
   /* color original: black; mejor usar el color del tema para contraste */
   color: var(--text-secondary);
