@@ -116,9 +116,11 @@ header h1 {
   margin: 2rem auto 1.5rem;
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.back-button {
+.nav-button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -134,8 +136,8 @@ header h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.back-button:hover,
-.back-button:focus-visible {
+.nav-button:hover,
+.nav-button:focus-visible {
   transform: translateY(-4px);
   background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(244, 114, 182, 0.5));
   box-shadow: 0 22px 48px rgba(56, 189, 248, 0.25);
@@ -143,7 +145,7 @@ header h1 {
   outline-offset: 4px;
 }
 
-.back-button:active {
+.nav-button:active {
   transform: translateY(0) scale(0.98);
 }
 
