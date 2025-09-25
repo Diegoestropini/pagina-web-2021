@@ -5,6 +5,13 @@ const MAX_SCALE = 1.8;
 const ZOOM_INCREMENT = 0.018;
 const ROTATION_INTERVAL = 5000;
 
+const setCurrentYear = () => {
+  const yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+};
+
 const createZoomController = (image) => {
   let animationFrame = null;
   let isZooming = false;
@@ -77,30 +84,91 @@ const createZoomController = (image) => {
   return { reset };
 };
 
+const initializeIndicators = (container, onSelect) => {
+  const indicatorButtons = Array.from(
+    container.querySelectorAll('.post-media-indicator')
+  );
+
+  const setActiveIndicator = (index) => {
+    indicatorButtons.forEach((button, idx) => {
+      const isActive = idx === index;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+
+  indicatorButtons.forEach((button, index) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (typeof onSelect === 'function') {
+        onSelect(index);
+      }
+    });
+  });
+
+  return { setActiveIndicator };
+};
+
 const initializeMediaRotation = (mediaContainer) => {
   const images = Array.from(mediaContainer.querySelectorAll('.post-media-image'));
   const caption = mediaContainer.querySelector('.post-media-caption');
   const prevButton = mediaContainer.querySelector('.post-media-control--prev');
   const nextButton = mediaContainer.querySelector('.post-media-control--next');
+  const skeleton = mediaContainer.querySelector('.post-media__skeleton');
+  const { setActiveIndicator } = initializeIndicators(mediaContainer, (index) => {
+    stopRotation();
+    showImage(index);
+    resumeRotationIfIdle();
+  });
 
   if (images.length === 0) {
+    if (skeleton) {
+      skeleton.classList.add('is-hidden');
+    }
     return;
   }
 
   let currentIndex = images.findIndex((image) => image.classList.contains('is-active'));
   if (currentIndex < 0) {
     currentIndex = 0;
+    images[currentIndex].classList.add('is-active');
   }
 
   images.forEach((image, index) => {
-    if (index === currentIndex) {
-      image.classList.add('is-active');
-    } else {
+    if (index !== currentIndex) {
       image.classList.remove('is-active');
     }
   });
 
   const controllers = images.map((image) => createZoomController(image));
+
+  const markImageLoaded = (image) => {
+    if (!(image instanceof HTMLImageElement)) {
+      return;
+    }
+
+    if (image.complete || image.naturalWidth > 0) {
+      if (skeleton) {
+        skeleton.classList.add('is-hidden');
+      }
+      image.removeEventListener('load', handleLoaded);
+    }
+  };
+
+  const handleLoaded = (event) => {
+    const target = event.currentTarget;
+    if (target instanceof HTMLImageElement) {
+      markImageLoaded(target);
+    }
+  };
+
+  images.forEach((image) => {
+    if (image.complete) {
+      markImageLoaded(image);
+    } else {
+      image.addEventListener('load', handleLoaded);
+    }
+  });
 
   const updateCaption = () => {
     if (!caption) {
@@ -117,6 +185,7 @@ const initializeMediaRotation = (mediaContainer) => {
   });
 
   updateCaption();
+  setActiveIndicator(currentIndex);
 
   const showImage = (nextIndex) => {
     if (nextIndex === currentIndex || !images[nextIndex]) {
@@ -131,6 +200,7 @@ const initializeMediaRotation = (mediaContainer) => {
     images[currentIndex].classList.add('is-active');
     controllers[currentIndex].reset();
     updateCaption();
+    setActiveIndicator(currentIndex);
   };
 
   const goToNextImage = () => {
@@ -167,16 +237,6 @@ const initializeMediaRotation = (mediaContainer) => {
     }
   };
 
-  const handleManualNavigation = (navigateFn) => {
-    if (typeof navigateFn !== 'function') {
-      return;
-    }
-
-    stopRotation();
-    navigateFn();
-    resumeRotationIfIdle();
-  };
-
   if (images.length >= 2) {
     startRotation();
   }
@@ -191,14 +251,18 @@ const initializeMediaRotation = (mediaContainer) => {
   if (prevButton) {
     prevButton.addEventListener('click', (event) => {
       event.preventDefault();
-      handleManualNavigation(goToPreviousImage);
+      stopRotation();
+      goToPreviousImage();
+      resumeRotationIfIdle();
     });
   }
 
   if (nextButton) {
     nextButton.addEventListener('click', (event) => {
       event.preventDefault();
-      handleManualNavigation(goToNextImage);
+      stopRotation();
+      goToNextImage();
+      resumeRotationIfIdle();
     });
   }
 
@@ -215,49 +279,12 @@ const initializeMediaRotation = (mediaContainer) => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+const initializeApp = () => {
   document.body.classList.add('js-enabled');
+  setCurrentYear();
 
   const mediaContainers = Array.from(document.querySelectorAll('.post-media'));
   mediaContainers.forEach(initializeMediaRotation);
+};
 
-  const heroTitle = document.querySelector('.hero-title');
-  const mainContent = document.querySelector('#contenido');
-
-  if (heroTitle && mainContent instanceof HTMLElement) {
-    const revealContent = () => {
-      document.body.classList.add('content-visible');
-      mainContent.focus();
-    };
-
-    const isModifiedEvent = (event) => event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
-
-    heroTitle.addEventListener('click', (event) => {
-      if (isModifiedEvent(event)) {
-        return;
-      }
-
-      if (typeof event.button === 'number' && event.button !== 0) {
-        return;
-      }
-
-      event.preventDefault();
-      revealContent();
-    });
-
-    heroTitle.addEventListener('keydown', (event) => {
-      const { key } = event;
-
-      if (key !== 'Enter' && key !== ' ' && key !== 'Spacebar') {
-        return;
-      }
-
-      if (event.ctrlKey || event.metaKey) {
-        return;
-      }
-
-      event.preventDefault();
-      revealContent();
-    });
-  }
-});
+document.addEventListener('DOMContentLoaded', initializeApp);

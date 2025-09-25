@@ -1,76 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Irreal - Contenido</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo Irreal - Contenido</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="content-visible">
-<header>
-  <h1 id="titulo">Bienvenidos a un mundo donde nada es real</h1>
-</header>
+<body>
+  <header class="site-header" aria-label="Cabecera global">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__title">Mundo Irreal</span>
+        <span class="brand__tagline">Crónicas para quienes sospechan de la realidad</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a class="site-nav__link" href="index.html">Inicio</a>
+        <a class="site-nav__link is-active" href="mundo.html">Mundo Irreal</a>
+        <a class="site-nav__link" href="historias.html">Historias</a>
+      </nav>
+    </div>
+  </header>
 
-<nav class="page-nav" aria-label="Navegación secundaria">
-  <a class="nav-button back-button" href="index.html">← Volver al inicio</a>
-  <a class="nav-button mystery-button" href="historias.html">Historias misteriosas</a>
-</nav>
+  <main id="contenido" tabindex="-1">
+    <section class="page-hero">
+      <div class="page-hero__content">
+        <h1>Mundo Irreal</h1>
+        <p>Elaboramos un marco narrativo que combina investigación científica y especulación creativa. Esta guía resume los pilares conceptuales para profesionales que necesitan entender la propuesta antes de activarla.</p>
+      </div>
+    </section>
 
-<main id="contenido">
-  <section class="content">
-    <article class="post">
-      <h2>Introducción</h2>
-      <p>Dicho simple: el cerebro se parece más a un procesador que a un diccionario; no ‘piensa  con palabras, sino con patrones de actividad que podemos imaginar, a modo de metáfora, como 0 y 1.</p>
-<p>Más preciso: no todo “se traduce” a ordenadores. En neurociencia cognitiva se modela el cerebro como un sistema de procesamiento de información implementado por patrones de disparo y conexiones sinápticas en redes neuronales biológicas; el “ordenador” es una metáfora de modelado, no la naturaleza de lo mental. La intuición de que la experiencia puede engañar —presente, por ejemplo, en el mito de la caverna de Platón— sugiere que la percepción es una reconstrucción susceptible de ilusiones, no que “todo sea un sueño”.</p>
-      <figure class="post-media">
-        <img
-          class="post-media-image is-active"
-          src="tokyo-night.png.png"
-          alt="Representación surrealista de la modernidad"
-          data-description="modernidad y misterio"
-        >
-        <img
-          class="post-media-image"
-          src="cars.png.png"
-          alt="Nebulosa de autos que simboliza un universo en expansión"
-          data-description="universo en crecimiento"
-        >
-        <button
-          type="button"
-          class="post-media-control post-media-control--prev"
-          aria-label="Imagen anterior"
-        >
-          &#10094;
-        </button>
-        <button
-          type="button"
-          class="post-media-control post-media-control--next"
-          aria-label="Imagen siguiente"
-        >
-          &#10095;
-        </button>
-        <figcaption class="post-media-caption" aria-live="polite">
-          modernidad y misterio
-        </figcaption>
-      </figure>
-    </article>
+    <nav class="quick-nav" aria-label="Accesos rápidos">
+      <a class="quick-nav__link" href="index.html">← Volver al inicio</a>
+      <a class="quick-nav__link" href="#marco-teorico">Marco teórico</a>
+      <a class="quick-nav__link" href="#experiencias">Experiencias</a>
+      <a class="quick-nav__link" href="historias.html">Historias destacadas</a>
+    </nav>
 
-    <article class="post">
-      <h2>Sueños y alucinaciones</h2>
-      <p id="dreams" class="dreams">No es que nada exista: accedemos a la realidad a través de percepciones y modelos internos. El cerebro no copia el mundo tal cual; lo reconstruye integrando señales sensoriales con expectativas. Por eso lo que sentimos como “lo real” es una estimación, no una transcripción literal.</p>
-<p>Decir que “todo es una alucinación” es una metáfora, no un diagnóstico. Técnicamente, la percepción puede entenderse como inferencia predictiva: a veces acierta y otras produce ilusiones. Nuestros juicios se organizan como creencias y metacreencias, pero están calibrados por el contacto con el entorno y con otros. No vivimos un sueño, sino una realidad interpretada.</p>
+    <section class="content" id="marco-teorico">
+      <article class="post">
+        <h2>Marco teórico</h2>
+        <div class="post__grid">
+          <div class="post__body">
+            <p>En neurociencia cognitiva se entiende el cerebro como un sistema que infiere la realidad mediante patrones de disparo neuronal. No pensamos literalmente en ceros y unos, pero la metáfora computacional ayuda a comprender cómo generamos hipótesis sobre el entorno.</p>
+            <p>Las ilusiones, los sueños y las alucinaciones son ejemplos de cuando ese sistema predictivo falla o se adelanta. Desde Mundo Irreal tomamos estas ideas para construir relatos que cuestionan lo aparente sin caer en el nihilismo.</p>
+          </div>
+          <aside class="info-card">
+            <h3 class="info-card__title">Referencias clave</h3>
+            <ul class="info-card__list">
+              <li>Teoría del procesamiento predictivo</li>
+              <li>Mito de la caverna reinterpretado</li>
+              <li>Laboratorio de percepción y sesgos</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
 
-    </article>
-  </section>
-</main>
+      <article class="post" id="experiencias">
+        <h2>Experiencias guiadas</h2>
+        <p>Cada entrega del Mundo Irreal se diseña como un viaje modular. Iniciamos con una cápsula introductoria que establece el tono y continuamos con escenas que exploran sensaciones de extrañamiento. Finalizamos con una síntesis accionable que sugiere cómo aplicar las ideas en proyectos creativos.</p>
+        <div class="post__grid post__grid--reverse">
+          <div class="post__body">
+            <h3 class="post__subtitle">Componentes de la experiencia</h3>
+            <ul class="feature-list">
+              <li><strong>Microrrelatos:</strong> piezas de menos de 400 palabras que acompañan visuales dinámicos.</li>
+              <li><strong>Mapas conceptuales:</strong> esquemas navegables que conectan ciencia, arte y narrativa.</li>
+              <li><strong>Sesiones en vivo:</strong> espacios para profundizar con expertos invitados.</li>
+            </ul>
+          </div>
+          <aside class="info-card">
+            <h3 class="info-card__title">Resultados esperados</h3>
+            <p class="info-card__text">Mayor coherencia entre identidad visual y discurso, además de ideas accionables para campañas transmedia.</p>
+          </aside>
+        </div>
+        <blockquote class="pull-quote">
+          <p>“La experiencia Mundo Irreal traduce teoría compleja en decisiones de diseño concretas.”</p>
+          <cite>Informe de estrategia, edición 2024</cite>
+        </blockquote>
+      </article>
+    </section>
+  </main>
 
-    <footer>
-        <p>&copy; Copyright 2020</p>
-    </footer>
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2024</span> Mundo Irreal. Todo es una posibilidad.</p>
+  </footer>
 
-    <script src="hola.js"></script>
+  <script src="hola.js"></script>
 </body>
 </html>

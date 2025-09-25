@@ -1,72 +1,130 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Irreal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo Irreal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1 id="titulo">Bienvenidos a un mundo donde nada es real</h1>
-</header>
+  <header class="site-header" aria-label="Cabecera global">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__title">Mundo Irreal</span>
+        <span class="brand__tagline">Crónicas para quienes sospechan de la realidad</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a class="site-nav__link is-active" href="index.html">Inicio</a>
+        <a class="site-nav__link" href="mundo.html">Mundo Irreal</a>
+        <a class="site-nav__link" href="historias.html">Historias</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
-  <a class="hero-title" href="mundo.html">Bienvenidos a un mundo donde nada es real</a>
-  <div class="hero-accent" aria-hidden="true"></div>
-</section>
+  <main id="contenido" tabindex="-1">
+    <section class="hero hero--home" id="hero">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Identidad</p>
+        <h1 class="hero__title">Narrativas para un futuro improbable</h1>
+        <p class="hero__lede">Exploramos los límites entre percepción y ficción con relatos, análisis y recursos que dan forma a una marca sin anclas en lo cotidiano.</p>
+        <div class="hero__actions">
+          <a class="button" href="#mundo-irreal">Entrar al Mundo Irreal</a>
+          <a class="button button--ghost" href="historias.html">Leer historias</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero-glass">
+          <span class="hero-glass__label">Último reporte</span>
+          <strong class="hero-glass__value">Realidad simulada 92%</strong>
+          <p class="hero-glass__copy">El tejido narrativo se expande gracias a nuevas observaciones y relatos compartidos por la comunidad.</p>
+        </div>
+        <div class="hero-orbital">
+          <span class="hero-orbital__halo"></span>
+          <span class="hero-orbital__planet"></span>
+        </div>
+      </div>
+    </section>
 
-<main id="contenido" tabindex="-1">
-  <section class="content">
-    <article class="post">
-      <h2>Introducción</h2>
-      <p>Nuestro cerebro, en realidad, es un ordenador que "piensa" en términos binarios y no en términos lingüísticos. Esto se debe a que cuando pensamos, nuestros cerebros codifican nuestras ideas y percepciones en códigos de 1 y 0, en lugar de colores, objetos, relaciones, palabras, caracteres de nuestro alfabeto, frases, ideas, sentimientos, percepciones, emociones, tiempo, espacio o infinito.</p>
-      <p>Es decir, todo se traduce en términos de ordenadores. No es raro que muchas personas estén convencidas de que todo es una ilusión. De hecho, los filósofos griegos ya lo advirtieron. "No es un sueño, pues, lo que estás viendo, sino una visión de sueños", decía Sócrates. "¿Qué es lo que estoy viendo? ¿Un sueño o una visión de sueños?", se preguntaba Platón en su República. "Todo esto no son más que visiones de un sueño", decía Aristóteles. "Esto es un sueño", afirmaba el poeta de los Sueños de Calipso.</p>
+    <section class="content content--grid" id="mundo-irreal">
+      <header class="section-header">
+        <p class="section-header__eyebrow">Propuesta de valor</p>
+        <h2 class="section-header__title">¿Qué hace único al Mundo Irreal?</h2>
+        <p class="section-header__intro">Reunimos conocimiento científico, filosofía y ficción especulativa para construir una experiencia coherente y envolvente. Todo comienza aceptando que lo real puede desdoblarse.</p>
+      </header>
+
+      <div class="post-grid">
+        <article class="post-card">
+          <h3 class="post-card__title">Percepción expandida</h3>
+          <p class="post-card__body">Traducimos hallazgos de la neurociencia en relatos accesibles. Cada artículo abre una ventana a cómo el cerebro fabrica lo que llamamos realidad.</p>
+          <p class="post-card__meta">Formatos: ensayos breves, cápsulas auditivas, infografías interactivas.</p>
+        </article>
+
+        <article class="post-card">
+          <h3 class="post-card__title">Experiencias inmersivas</h3>
+          <p class="post-card__body">Diseñamos recorridos digitales que combinan audio, visuales generativos y textos fragmentados. La navegación está pensada para profesionales que buscan inspiración narrativa.</p>
+          <p class="post-card__meta">Duración recomendada: 15 minutos de exploración guiada.</p>
+        </article>
+
+        <article class="post-card">
+          <h3 class="post-card__title">Comunidad creativa</h3>
+          <p class="post-card__body">Convocamos a escritores, tecnólogos y diseñadores a co-crear historias con la identidad de Mundo Irreal como hilo conductor.</p>
+          <p class="post-card__meta">Acompañamos con sesiones de feedback y bibliotecas de recursos descargables.</p>
+        </article>
+      </div>
+
       <figure class="post-media">
-        <img
-          class="post-media-image is-active"
-          src="tokyo-night.png.png"
-          alt="Representación surrealista de la modernidad"
-          data-description="modernidad y misterio"
-        >
-        <img
-          class="post-media-image"
-          src="cars.png.png"
-          alt="Nebulosa de autos que simboliza un universo en expansión"
-          data-description="universo en crecimiento"
-        >
-        <button
-          type="button"
-          class="post-media-control post-media-control--prev"
-          aria-label="Imagen anterior"
-        >
-          &#10094;
-        </button>
-        <button
-          type="button"
-          class="post-media-control post-media-control--next"
-          aria-label="Imagen siguiente"
-        >
-          &#10095;
-        </button>
-        <figcaption class="post-media-caption" aria-live="polite">
-          modernidad y misterio
-        </figcaption>
+        <div class="post-media__skeleton" aria-hidden="true"></div>
+        <picture>
+          <source srcset="assets/modernidad.svg" type="image/svg+xml">
+          <img class="post-media-image is-active" src="assets/modernidad.svg" alt="Representación futurista de la ciudad Mundo Irreal" data-description="Ciudad envuelta en luces neón" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="assets/universo.svg" type="image/svg+xml">
+          <img class="post-media-image" src="assets/universo.svg" alt="Nebulosa abstracta que simboliza el universo en expansión" data-description="Nebulosa en expansión" loading="lazy">
+        </picture>
+        <div class="post-media-controls" role="group" aria-label="Galería de identidad">
+          <button type="button" class="post-media-control post-media-control--prev" aria-label="Imagen anterior">&#10094;</button>
+          <button type="button" class="post-media-control post-media-control--next" aria-label="Imagen siguiente">&#10095;</button>
+        </div>
+        <ol class="post-media-indicators" role="tablist" aria-label="Cambiar ilustración">
+          <li><button type="button" class="post-media-indicator is-active" aria-label="Ciudad futurista"></button></li>
+          <li><button type="button" class="post-media-indicator" aria-label="Nebulosa expansiva"></button></li>
+        </ol>
+        <figcaption class="post-media-caption" aria-live="polite">Ciudad envuelta en luces neón</figcaption>
       </figure>
-    </article>
 
-    <article class="post">
-      <h2>Sueños y alucinaciones</h2>
-      <p id="dreams" class="dreams">No es que no exista, pero nada es real. No es que este mundo esté compuesto por percepciones, emociones, pensamientos, sentimientos, palabras, caracteres, alfabetos, conceptos, ideas, frases, objetos, relaciones, colores, líneas, superficies, extensiones, espacios, tiempos o infinitos que no existen, sino que nada es real.</p>
-      <p>El mundo es una alucinación. Todo es una ilusión. El mundo está compuesto por "creencias" y "creencias de creencias" (la clave de todo esto está en la construcción de la mente, más que en la mente en sí misma). Todo es un sueño. Todo es una alucinación. El mundo es una ilusión. El universo es una ilusión. La Tierra es una ilusión. La Naturaleza es una ilusión. La Historia es una ilusión. La Civilización es una ilusión. La Vida es una ilusión. Todo es un sueño. Todo es una alucinación.</p>
-    </article>
-  </section>
-</main>
-  <footer>
-    <p>&copy; Copyright 2020</p>
+      <blockquote class="pull-quote">
+        <p>“No buscamos escapar del mundo, sino diseñar un relato compartido capaz de cuestionarlo.”</p>
+        <cite>Equipo creativo de Mundo Irreal</cite>
+      </blockquote>
+    </section>
+
+    <section class="content" aria-labelledby="articulos-destacados">
+      <header class="section-header">
+        <p class="section-header__eyebrow">Artículos recientes</p>
+        <h2 id="articulos-destacados" class="section-header__title">Lecturas recomendadas</h2>
+        <p class="section-header__intro">Seleccionamos temas para entrar en la estética irreal sin perder el rigor profesional. Cada bloque se adapta a escritorio y móvil con tipografía optimizada para lectura prolongada.</p>
+      </header>
+
+      <article class="post">
+        <h3>Modelos mentales y simulaciones</h3>
+        <p>El cerebro opera como un motor de predicciones. En lugar de registrar el mundo de forma literal, construye modelos estadísticos que contrastan lo esperado con lo que llega a través de los sentidos. Esta comprensión inspira nuestros guiones y visuales.</p>
+        <p>Los artículos del Mundo Irreal presentan gráficas, glosarios y lecturas complementarias para que la experiencia sea tan clara como inquietante. Así reforzamos la marca y evitamos redundancias en el mensaje.</p>
+      </article>
+
+      <article class="post">
+        <h3>Relatos para la incertidumbre</h3>
+        <p>En tiempos de sobrecarga informativa, proponemos historias fragmentadas que se pueden leer en trayectos cortos. Cada pieza termina con una llamada a la acción contextual que conduce a nuestras colecciones principales.</p>
+        <p>La identidad visual se mantiene gracias al uso de tarjetas translúcidas, gradientes suaves y títulos jerarquizados. Esta coherencia favorece el reconocimiento en entornos profesionales.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2024</span> Mundo Irreal. Todo es una posibilidad.</p>
   </footer>
 
   <script src="hola.js"></script>
